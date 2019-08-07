@@ -14,6 +14,7 @@ import {AppStateEffects} from './store/app.effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {savePlacesStore} from "./places/store/places.reducer";
+import {NgxMapboxGLModule} from "ngx-mapbox-gl";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,9 @@ import {savePlacesStore} from "./places/store/places.reducer";
     MatIconModule,
     PlacesModule,
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    NgxMapboxGLModule.withConfig({
+      accessToken: environment.mapboxAccessToken
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

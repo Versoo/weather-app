@@ -1,5 +1,5 @@
 <mat-list>
-  <mat-list-item *ngFor="let place of (historyPlaces | slice:0:showItems)" style="width: 100%;">
+  <mat-list-item *ngFor="let place of historyPlaces" style="width: 100%;">
     <button type="button" mat-icon-button (click)="removeItem(place)">
       <mat-icon color="red" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
     </button>

@@ -9,47 +9,15 @@
         <h3 class="mat-grid-tile-header">Ulubione:</h3>
         <app-favorite-places-list [favorites]="favoritePlaces$ | async"></app-favorite-places-list>
       </ng-container>
-      <ng-container *ngIf="(searchHistoryPlaces$ | async).length > 0">
+      <ng-container *ngIf="searchHistoryPlaces.length > 0">
         <h3 class="mat-grid-tile-header" style="justify-content: space-between; align-items: center; display: flex;">Historia: <app-clear-history-button></app-clear-history-button></h3>
-        <app-places-history-list [historyPlaces]="searchHistoryPlaces$ | async"></app-places-history-list>
+        <app-places-history-list [historyPlaces]="searchHistoryPlaces"></app-places-history-list>
       </ng-container>
     </app-side-nav>
   </mat-sidenav>
   <mat-sidenav-content>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada turpis ut hendrerit ornare. Praesent et
-    dui non justo suscipit dignissim nec quis ex. Nunc sit amet fermentum metus, et porta mauris. Maecenas erat nisi,
-    ornare vitae ex ac, elementum dapibus lorem. Pellentesque id fringilla sem, eu posuere arcu. Fusce facilisis auctor
-    neque porttitor facilisis. Vestibulum tincidunt velit quis leo fringilla elementum.
-
-    Cras pulvinar porttitor erat. Morbi vel dolor ac arcu fringilla vehicula. Integer aliquet sem non mauris bibendum
-    congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed eros
-    ipsum, accumsan et felis eget, pretium efficitur enim. Aenean rutrum elementum sem, et elementum est pretium non.
-    Fusce ac elementum nulla. Sed ut ornare elit. Proin nisi urna, vulputate nec vestibulum vitae, vulputate eget nisi.
-    Pellentesque tempus fringilla mi, sit amet venenatis mauris consequat vel. Curabitur quis elit est.
-
-    Nullam vel risus fringilla, luctus felis at, rutrum turpis. Mauris interdum dui vitae nibh ornare, sit amet posuere
-    enim aliquet. Ut in massa elit. Praesent semper ante eu dui malesuada, et posuere arcu porttitor. Donec non urna
-    vitae metus tincidunt dictum. Phasellus imperdiet, ex sed tincidunt ultrices, leo orci ullamcorper sem, non aliquet
-    mauris erat eu leo. Vivamus feugiat felis et risus sodales ornare. Proin non tortor a eros accumsan interdum nec
-    vitae nibh. Donec cursus sit amet orci a ullamcorper. Nullam enim neque, malesuada eget velit vel, interdum ornare
-    augue. Nam nec facilisis tortor. Maecenas dignissim elit eu faucibus fringilla. Aliquam erat volutpat. Praesent non
-    ipsum congue, iaculis mi quis, convallis nisi. Sed tellus sem, convallis quis consectetur vitae, maximus quis felis.
-
-    Cras imperdiet ultrices dolor in pulvinar. Donec consequat ultrices sem, id cursus tellus convallis at. Vestibulum
-    nec felis a turpis imperdiet lobortis ac in turpis. Cras sed magna pretium urna rutrum dictum. In eget mollis lorem.
-    Donec id lacus id erat consectetur posuere. Donec ac nunc sed libero hendrerit sollicitudin in sed est. In viverra
-    vitae nunc quis mattis. Fusce et scelerisque erat. Nulla pellentesque lacinia efficitur. Duis interdum, augue congue
-    volutpat lacinia, turpis risus maximus nunc, at viverra justo risus eget risus. Nullam accumsan mi venenatis, mollis
-    elit sed, consequat leo. Maecenas et risus leo. Fusce cursus ornare dolor quis pharetra. Quisque mollis nulla eget
-    semper aliquet. Donec nisl sapien, aliquet eu pretium eu, accumsan vel sapien.
-
-    Donec aliquam tincidunt turpis sagittis lacinia. Praesent sit amet enim mi. Nullam tempus risus at auctor hendrerit.
-    Nullam felis leo, dignissim sed purus et, iaculis interdum augue. Mauris molestie, felis ac varius tincidunt, urna
-    quam egestas nisl, in fermentum est odio vel mi. Pellentesque habitant morbi tristique senectus et netus et
-    malesuada fames ac turpis egestas. Vivamus condimentum, nibh a finibus sagittis, ante tellus laoreet nisl, sed
-    rhoncus ex magna at justo.
+   <app-map-view [places]="searchHistoryPlaces"></app-map-view>
   </mat-sidenav-content>
-  <mat-sidenav #drawer2 mode="over" position="end" [opened]="false"></mat-sidenav>
 </mat-sidenav-container>
 <app-footer></app-footer>
 

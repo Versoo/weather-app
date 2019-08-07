@@ -90,6 +90,9 @@ export class FavoritesRemovePlace implements Action {
 
 export class WeatherAutoTick implements Action {
   readonly type = WEATHER_AUTO_TICK;
+  constructor(public payload: Place) {
+
+  }
 }
 
 export class WeatherUpdatePlace implements Action {
@@ -103,7 +106,7 @@ export class WeatherUpdatePlace implements Action {
 export class SelectCurrentPlace implements Action {
   readonly type = SELECT_CURRENT_PLACE;
 
-  constructor(public payload: Place) {
+  constructor(public payload: string) {
 
   }
 }
@@ -119,4 +122,7 @@ export type PlacesActions =
   | HistoryRemovePlace
   | FavoritesAddPlace
   | FavoritesRemovePlace
+  | WeatherAutoTick
+  | WeatherUpdatePlace
   | SelectCurrentPlace;
+

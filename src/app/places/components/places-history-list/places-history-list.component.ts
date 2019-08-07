@@ -11,7 +11,7 @@ import {HistoryRemovePlace} from "../../store/places.actions";
 })
 export class PlacesHistoryListComponent implements OnInit {
   @Input() historyPlaces: Place[];
-  @Input() showItems: number = 5;
+  @Input() showItems: number = null;
 
   constructor(private store: Store<AppState>) {
   }

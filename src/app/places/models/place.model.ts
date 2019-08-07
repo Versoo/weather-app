@@ -1,4 +1,4 @@
-import {PlaceInterface} from "./place.interface";
+import {PlaceInterface, PlaceWeatherData} from "./place.interface";
 
 export class Place implements PlaceInterface {
   id: string;
@@ -9,7 +9,7 @@ export class Place implements PlaceInterface {
     type: string;
     coordinates: number[];
   };
-
+  weather: PlaceWeatherData = null;
 
   constructor(args: Partial<PlaceInterface>) {
     this.id = args.id || '';

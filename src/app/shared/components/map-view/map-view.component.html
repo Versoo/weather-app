@@ -1,0 +1,16 @@
+<mgl-map
+  movingMethod="flyTo"
+  [style]="'mapbox://styles/mapbox/light-v9'"
+  [zoom]="[5]"
+  [center]="[16.91667, 52.4]"
+>
+  <template *ngFor="let place of places; let $i = index">
+    <mgl-marker [lngLat]="place.geometry.coordinates" anchor="center" style="text-align: center;"
+                (click)="selectPlace(place)">
+      <mat-icon style="margin: 5px auto; align-self: center">star</mat-icon>
+      <div *ngIf="place.weather">
+        {{ place.weather.temp }}&deg;C
+      </div>
+    </mgl-marker>
+  </template>
+</mgl-map>

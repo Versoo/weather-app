@@ -15,10 +15,12 @@ import {catchError, map, switchMap} from "rxjs/operators";
 import {MapboxFeature, MapboxPlacesService} from "../services";
 import {of} from "rxjs/internal/observable/of";
 import {Place} from "../models/place.model";
+import {AppState} from "../../store/app.reducer";
+import {Store} from "@ngrx/store";
 
 @Injectable()
 export class PlacesEffects {
-  constructor(public actions$: Actions, private mapboxPlacesService: MapboxPlacesService) {
+  constructor(public actions$: Actions, private store: Store<AppState>, private mapboxPlacesService: MapboxPlacesService) {
   }
 
   @Effect()
@@ -44,6 +46,7 @@ export class PlacesEffects {
       return of(new HistoryAddPlace(place));
     }),
   );
+
 
   @Effect()
   historyAddPlace = this.actions$.pipe(

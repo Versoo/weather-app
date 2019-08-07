@@ -5,10 +5,16 @@
       <h3 class="place-card__content-header">
         {{ place.place_name }}
       </h3>
-      Temp: 0&deg;C - Lekkie zachmurzenie
+      <ng-container *ngIf="place.weather; else noWeatherData">
+        Temp: {{ place.weather.temp }}&deg;C - {{ place.weather.description }}
+      </ng-container>
+      <ng-template #noWeatherData>
+        Brak danych
+      </ng-template>
     </div>
     <div class="place-card__actions">
-      <app-favorite-place-icon-button [favorite]="place.favorite" (click)="onChangeFavoriteState(place)"></app-favorite-place-icon-button>
+      <app-favorite-place-icon-button [favorite]="place.favorite"
+                                      (click)="onChangeFavoriteState(place)"></app-favorite-place-icon-button>
     </div>
   </mat-card-content>
 </mat-card>
