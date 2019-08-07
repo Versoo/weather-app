@@ -22,7 +22,7 @@ export interface PlacesState {
 }
 
 const initialPlacesState: PlacesState = {
-  autocomplete: JSON.parse(localStorage.getItem('__autocomplete') || '[]'),
+  autocomplete: [],
   history: JSON.parse(localStorage.getItem('__history') || '[]'),
   favorites: JSON.parse(localStorage.getItem('__favorites') || '[]'),
   selected: null,
@@ -129,10 +129,6 @@ export function savePlacesStore(reducer) {
   return function newReducer(state, action) {
     const nextState = reducer(state, action);
     switch (action.type) {
-      case AUTOCOMPLETE_ADD_PLACES:
-      case AUTOCOMPLETE_ADD_PLACE:
-        localStorage.setItem('__autocomplete', JSON.stringify(nextState.places.autocomplete));
-        break;
       case HISTORY_ADD_PLACE:
       case HISTORY_REMOVE_PLACE:
       case HISTORY_CLEAR_PLACES:
@@ -148,5 +144,3 @@ export function savePlacesStore(reducer) {
     return nextState;
   }
 }
-
-

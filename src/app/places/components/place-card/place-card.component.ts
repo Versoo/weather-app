@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {Place} from "../../models/place.model";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../store/app.reducer";
-import {FavoritesAddPlace, FavoritesRemovePlace} from "../../store/places.actions";
+import {FavoritesAddPlace, FavoritesRemovePlace, SelectCurrentPlace} from "../../store/places.actions";
 
 @Component({
   selector: 'app-place-card',
@@ -11,6 +11,10 @@ import {FavoritesAddPlace, FavoritesRemovePlace} from "../../store/places.action
 })
 export class PlaceCardComponent implements OnInit {
   @Input() place: Place;
+
+  @HostListener('click') onClick() {
+    this.store.dispatch(new SelectCurrentPlace(this.place.id));
+  }
 
   constructor(private store: Store<AppState>) {
   }

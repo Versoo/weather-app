@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.sendWeatherTick();
     this.autoWeatherLoader = setInterval(() => {
       this.sendWeatherTick()
-    }, 6000);
+    }, 60000);
   }
 
   stopTimer() {

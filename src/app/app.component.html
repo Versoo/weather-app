@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-header></app-header>
-<mat-sidenav-container autosize [hasBackdrop]="false">
+<mat-sidenav-container autosize [hasBackdrop]="false" (close)="onClose($event)" >
   <mat-sidenav role="navigation" mode="over" [opened]="(layoutState$ | async).sidebarOpen">
     <app-side-nav>
       <h3 class="mat-grid-tile-header">Wyszukaj:</h3>

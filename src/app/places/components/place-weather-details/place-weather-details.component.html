@@ -1,0 +1,14 @@
+<ng-container *ngIf="place">
+  <h2>
+    {{ place.place_name}}
+  </h2>
+  <mat-list *ngIf="place.weather">
+    <mat-list-item>Status: {{place.weather.description}}</mat-list-item>
+    <mat-list-item>Aktualna: {{place.weather.temp}}&deg;C</mat-list-item>
+    <mat-list-item>Minimalna: {{place.weather.temp_min}}&deg;C</mat-list-item>
+    <mat-list-item>Maksymalna: {{place.weather.temp_max}}&deg;C</mat-list-item>
+    <mat-list-item>Wilgotność: {{place.weather.humidity}}%</mat-list-item>
+    <mat-list-item>Ciśnienie: {{place.weather.pressure}}hPa</mat-list-item>
+  </mat-list>
+</ng-container>
+

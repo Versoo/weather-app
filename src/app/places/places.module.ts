@@ -17,15 +17,17 @@ import {FavoritePlacesListComponent} from './components/favorite-places-list/fav
 import {ClearHistoryButtonComponent} from './components/clear-history-button/clear-history-button.component';
 import {PlaceCardComponent} from './components/place-card/place-card.component';
 import {FavoritePlaceIconButtonComponent} from './components/favorite-place-icon-button/favorite-place-icon-button.component';
+import { PlaceWeatherDetailsComponent } from './components/place-weather-details/place-weather-details.component';
 
 @NgModule({
-  declarations: [SearchPlaceFormComponent, PlacesHistoryListComponent, FavoritePlacesListComponent, ClearHistoryButtonComponent, PlaceCardComponent, FavoritePlaceIconButtonComponent],
+  declarations: [SearchPlaceFormComponent, PlacesHistoryListComponent, FavoritePlacesListComponent, ClearHistoryButtonComponent, PlaceCardComponent, FavoritePlaceIconButtonComponent, PlaceWeatherDetailsComponent],
   exports: [
     SearchPlaceFormComponent,
     PlacesHistoryListComponent,
     FavoritePlacesListComponent,
     ClearHistoryButtonComponent,
-    PlaceCardComponent
+    PlaceCardComponent,
+    PlaceWeatherDetailsComponent
   ],
   imports: [
     CommonModule,

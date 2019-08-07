@@ -10,6 +10,7 @@ import {
   HISTORY_ADD_PLACE,
   HistoryAddPlace,
   SelectCurrentPlace,
+  WeatherUpdatePlace,
 } from "./places.actions";
 import {catchError, map, switchMap} from "rxjs/operators";
 import {MapboxFeature, MapboxPlacesService} from "../services";
@@ -17,10 +18,12 @@ import {of} from "rxjs/internal/observable/of";
 import {Place} from "../models/place.model";
 import {AppState} from "../../store/app.reducer";
 import {Store} from "@ngrx/store";
+import {ICoordinates} from "../services/coordinates.interface";
+import {OpenWeatherService} from "../services/open-weather.service";
 
 @Injectable()
 export class PlacesEffects {
-  constructor(public actions$: Actions, private store: Store<AppState>, private mapboxPlacesService: MapboxPlacesService) {
+  constructor(public actions$: Actions, private store: Store<AppState>, private mapboxPlacesService: MapboxPlacesService, private openWeatherService: OpenWeatherService) {
   }
 
   @Effect()
@@ -45,6 +48,23 @@ export class PlacesEffects {
       const place = new Place(selectedPlace.payload);
       return of(new HistoryAddPlace(place));
     }),
+  );
+
+  @Effect()
+  weatherDataAttach = this.actions$.pipe(
+    ofType(HISTORY_ADD_PLACE),
+    switchMap((selectedPlace: HistoryAddPlace) => {
+      const place = selectedPlace.payload;
+      const coordinates: ICoordinates = {
+        lat: place.geometry.coordinates[1],
+        lon: place.geometry.coordinates[0]
+      };
+      return this.openWeatherService
+        .getWeatherByCords(coordinates)
+        .pipe(map(weatherData => {
+          return new WeatherUpdatePlace({place: place, weather: weatherData});
+        }));
+    })
   );
 
 

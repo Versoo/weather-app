@@ -1,16 +1,24 @@
-<mgl-map
-  movingMethod="flyTo"
-  [style]="'mapbox://styles/mapbox/light-v9'"
-  [zoom]="[5]"
-  [center]="[16.91667, 52.4]"
->
-  <template *ngFor="let place of places; let $i = index">
-    <mgl-marker [lngLat]="place.geometry.coordinates" anchor="center" style="text-align: center;"
-                (click)="selectPlace(place)">
-      <mat-icon style="margin: 5px auto; align-self: center">star</mat-icon>
-      <div *ngIf="place.weather">
-        {{ place.weather.temp }}&deg;C
-      </div>
-    </mgl-marker>
-  </template>
-</mgl-map>
+<mat-drawer-container autosize [hasBackdrop]="false">
+  <mat-drawer-content>
+    <mgl-map
+      movingMethod="flyTo"
+      [style]="'mapbox://styles/mapbox/light-v9'"
+      [zoom]="[5]"
+      [center]="[16.91667, 52.4]"
+    >
+      <template *ngFor="let place of places; let $i = index">
+        <mgl-marker [lngLat]="place.geometry.coordinates" anchor="center" style="text-align: center;"
+                    (click)="selectPlace(place)">
+          <mat-icon style="margin: 5px auto; align-self: center">{{ (place.id !== selectedPlaceId) ? 'place' : 'my_location' }}</mat-icon>
+          <div *ngIf="place.weather">
+            {{ place.weather.temp }}&deg;C
+          </div>
+        </mgl-marker>
+      </template>
+    </mgl-map>
+  </mat-drawer-content>
+
+  <mat-drawer mode="over" position="end" [opened]="showDetails()">
+    <app-place-weather-details [place]="currentPlace"></app-place-weather-details>
+  </mat-drawer>
+</mat-drawer-container>
