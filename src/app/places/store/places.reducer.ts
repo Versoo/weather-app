@@ -15,7 +15,7 @@ import {Place} from "../models/place.model";
 export interface PlacesState {
   autocomplete: MapboxFeature[];
   history: Place[];
-  favorites: Place[];
+  favorites: string[];
   selected: any;
   loading: boolean;
 }
@@ -41,7 +41,7 @@ export function placesReducer(state: PlacesState = initialPlacesState, action: P
         autocomplete: action.payload
       };
     case HISTORY_ADD_PLACE:
-      let isFavorite = state.favorites.some((item: Place) => item.id === action.payload.id);
+      let isFavorite = state.favorites.some((item: string) => item === action.payload.id);
       let newAddHistoryPlace = new Place({...action.payload, favorite: isFavorite});
       const nextAddHistory = state.history.filter((item: Place) => item.id !== action.payload.id);
       return {
@@ -60,33 +60,41 @@ export function placesReducer(state: PlacesState = initialPlacesState, action: P
         history: nextRemoveHistory
       };
 
-    case FAVORITES_ADD_PLACE:
-      let newFavoriteAddPlace = new Place({...action.payload, favorite: true});
+    case FAVORITES_ADD_PLACE: {
+      let nextFavoriteAddPlaces = state.favorites.filter((item: string) => item !== action.payload);
+      let place = state.history.find((place: Place) => place.id == action.payload);
+      let placeIndex = state.history.indexOf(place);
 
-      let nextFavoriteAddPlaces = state.favorites.filter((item: Place) => item.id !== action.payload.id);
-
-      let historyPlaceAddIndex = state.history.indexOf(action.payload);
       let nextAddFavoriteHistory = state.history || [];
-      if (historyPlaceAddIndex >= 0) {
-        nextAddFavoriteHistory[historyPlaceAddIndex] = newFavoriteAddPlace;
+      if (placeIndex > -1) {
+        nextAddFavoriteHistory[placeIndex] = {
+          ...place,
+          favorite: true
+        };
       }
 
       return {
         ...state,
-        favorites: [newFavoriteAddPlace, ...nextFavoriteAddPlaces],
+        favorites: [action.payload, ...nextFavoriteAddPlaces],
         history: nextAddFavoriteHistory
       };
-    case FAVORITES_REMOVE_PLACE:
-      let newFavoriteRemovePlace = new Place({...action.payload, favorite: false});
-      let newFavoritesRemovePlaces = state.favorites.filter((item: Place) => item.id !== action.payload.id);
-      let historyPlaceRemoveIndex = state.history.indexOf(action.payload);
-      let nextRemoveFavoriteHistory = state.history;
-      nextRemoveFavoriteHistory[historyPlaceRemoveIndex] = newFavoriteRemovePlace;
+    }
+    case FAVORITES_REMOVE_PLACE: {
+      let newFavoritesRemovePlaces = state.favorites.filter((item: string) => item !== action.payload);
+      let history = state.history;
+      let place = state.history.find((place: Place) => place.id == action.payload);
+      let placeIndex = state.history.indexOf(place);
+
+      history[placeIndex] = {
+        ...place,
+        favorite: false
+      };
       return {
         ...state,
         favorites: newFavoritesRemovePlaces,
-        history: nextRemoveFavoriteHistory
+        history: history
       };
+    }
     case SELECT_CURRENT_PLACE:
       return {
         ...state,

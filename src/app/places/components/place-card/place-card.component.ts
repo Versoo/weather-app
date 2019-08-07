@@ -20,9 +20,9 @@ export class PlaceCardComponent implements OnInit {
 
   onChangeFavoriteState(place: Place) {
     if (!place.favorite) {
-      this.store.dispatch(new FavoritesAddPlace(place));
+      this.store.dispatch(new FavoritesAddPlace(place.id));
     } else {
-      this.store.dispatch(new FavoritesRemovePlace(place));
+      this.store.dispatch(new FavoritesRemovePlace(place.id));
     }
   }
 }

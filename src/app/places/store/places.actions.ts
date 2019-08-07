@@ -75,7 +75,7 @@ export class HistoryRemovePlace implements Action {
 export class FavoritesAddPlace implements Action {
   readonly type = FAVORITES_ADD_PLACE;
 
-  constructor(public payload: Place) {
+  constructor(public payload: string) {
 
   }
 }
@@ -83,7 +83,7 @@ export class FavoritesAddPlace implements Action {
 export class FavoritesRemovePlace implements Action {
   readonly type = FAVORITES_REMOVE_PLACE;
 
-  constructor(public payload: Place) {
+  constructor(public payload: string) {
 
   }
 }

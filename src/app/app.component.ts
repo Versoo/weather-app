@@ -23,7 +23,9 @@ export class AppComponent implements OnInit {
     // TODO: Custom selector for Favorites State
     this.favoritePlaces$ = this.store.select('places')
       .pipe(
-        map((placesState: PlacesState) => placesState.favorites)
+        map((placesState: PlacesState) =>
+          placesState.history.filter((place: Place) => place.favorite)
+        ),
       );
 
     // TODO: Custom selector for History State
