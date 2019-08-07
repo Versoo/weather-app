@@ -19,7 +19,7 @@ export class MapViewComponent implements OnInit {
   }
 
   selectPlace(place: Place) {
-    this.store.dispatch(new SelectCurrentPlace(place));
+    this.store.dispatch(new SelectCurrentPlace(place.id));
   }
 
 }

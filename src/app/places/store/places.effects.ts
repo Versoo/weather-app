@@ -52,7 +52,7 @@ export class PlacesEffects {
   historyAddPlace = this.actions$.pipe(
     ofType(HISTORY_ADD_PLACE),
     switchMap((selectedPlace: HistoryAddPlace) => {
-      return of(new SelectCurrentPlace(selectedPlace.payload));
+      return of(new SelectCurrentPlace(selectedPlace.payload.id));
     })
   );
 }
