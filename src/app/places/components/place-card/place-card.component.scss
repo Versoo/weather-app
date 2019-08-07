@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  mat-card {
+    &:hover {
+      background-color: rgba(0,0,0,.2);
+    }
+  }
+
+  .place-card {
+    display: flex;
+    align-items: stretch;
+
+    &__actions, &__content {
+      padding: 0 5px;
+    }
+
+    &__content {
+      flex-grow: 1;
+
+      &-header {
+        margin: 0;
+        padding: 0 0 5px 0;
+      }
+    }
+    &__actions {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

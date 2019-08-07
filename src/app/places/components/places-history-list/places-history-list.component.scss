@@ -1,0 +1,22 @@
+:host {
+  button {
+    margin: 0 10px;
+    align-self: center;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    mat-icon {
+      height: 1.3rem;
+      width: 1.3rem;
+      font-size: 1.3rem;
+    }
+
+  }
+
+  mat-list-item {
+    height: auto;
+    margin-bottom: 15px;
+  }
+}

@@ -1,0 +1,11 @@
+<form class="place-search-form">
+  <mat-form-field class="place-search-form__field">
+    <input type="text" placeholder="Wyszukaj" aria-label="Number" matInput [formControl]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onAutocompleteSelect($event)" [displayWith]="displayOption">
+      <mat-option *ngFor="let option of (options$ | async)" [value]="option" >
+        {{option.place_name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

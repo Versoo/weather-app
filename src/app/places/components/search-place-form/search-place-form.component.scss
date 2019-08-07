@@ -1,0 +1,12 @@
+:host {
+  width: 100%;
+
+  .place-search-form {
+    width: 100%;
+
+    .place-search-form__field,
+    mat-form-field{
+      width: 100%;
+    }
+  }
+}
