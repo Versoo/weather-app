@@ -9,6 +9,7 @@ import {WeatherUpdatePlace} from "./places/store/places.actions";
 import {ICoordinates} from "./places/services/coordinates.interface";
 import {OpenWeatherService} from "./places/services/open-weather.service";
 import {tap} from "rxjs/internal/operators/tap";
+import {LayoutSate} from "./shared/store/layout.reducer";
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,11 @@ import {tap} from "rxjs/internal/operators/tap";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
+  layoutState$: Observable<LayoutSate>;
   favoritePlaces$: Observable<Place[]>;
   searchHistoryPlaces$: Subscription;
   searchHistoryPlaces: Place[];
+
 
   autoWeatherLoader;
 
@@ -27,6 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.layoutState$ = this.store.select('layout');
     // TODO: Custom selector for Favorites State
     this.favoritePlaces$ = this.store.select('places')
       .pipe(

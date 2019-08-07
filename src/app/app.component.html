@@ -1,7 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-header></app-header>
 <mat-sidenav-container autosize [hasBackdrop]="false">
-  <mat-sidenav role="navigation" mode="side" [opened]="true">
+  <mat-sidenav role="navigation" mode="over" [opened]="(layoutState$ | async).sidebarOpen">
     <app-side-nav>
       <h3 class="mat-grid-tile-header">Wyszukaj:</h3>
       <app-search-place-form></app-search-place-form>
@@ -10,13 +10,16 @@
         <app-favorite-places-list [favorites]="favoritePlaces$ | async"></app-favorite-places-list>
       </ng-container>
       <ng-container *ngIf="searchHistoryPlaces.length > 0">
-        <h3 class="mat-grid-tile-header" style="justify-content: space-between; align-items: center; display: flex;">Historia: <app-clear-history-button></app-clear-history-button></h3>
+        <h3 class="mat-grid-tile-header" style="justify-content: space-between; align-items: center; display: flex;">
+          Historia:
+          <app-clear-history-button></app-clear-history-button>
+        </h3>
         <app-places-history-list [historyPlaces]="searchHistoryPlaces"></app-places-history-list>
       </ng-container>
     </app-side-nav>
   </mat-sidenav>
   <mat-sidenav-content>
-   <app-map-view [places]="searchHistoryPlaces"></app-map-view>
+    <app-map-view [places]="searchHistoryPlaces"></app-map-view>
   </mat-sidenav-content>
 </mat-sidenav-container>
 <app-footer></app-footer>
