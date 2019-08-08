@@ -2,11 +2,11 @@
 Aplikacja ma służyć do tworzenia listy lokacji, w których chcemy na bieżąco sprawdzać pogodę.
 
 ## Podstawowe funkcjonalności:
-* dodawanie nowej lokacji do listy
-* usuwanie lokacji z listy
-* lista z lokacjami zawiera nazwę lokacji, temperaturę i podstawowy opis np. 'deszcz'
-* dane pogodowe pozyskiwane z zewnętrznego API
-* aplikacja powinna zapamiętywać listę lokacji pomiędzy sesjami
+* Dodawanie nowej lokacji do listy
+* Usuwanie lokacji z listy
+* Lista z lokacjami zawiera nazwę lokacji, temperaturę i podstawowy opis np. 'deszcz'
+* Dane pogodowe pozyskiwane z zewnętrznego API
+* Aplikacja powinna zapamiętywać listę lokacji pomiędzy sesjami
 
 ## Wybrane narzędzia:
 * Angular @7.2 [(Docs)](https://angular.io)
@@ -19,3 +19,4 @@ Aplikacja ma służyć do tworzenia listy lokacji, w których chcemy na bieżąc
 * Możliwość zaznaczenia ulubionych lokalizacji, wyświetlane na górze listy
 * Wyświetlanie lokalizacji na mapie
 * Wyświetlanie szczegółowych informacji na temat lokalizacji po wybraniu z listy.
+* Automatyczne odświeżanie danych co 60sek
