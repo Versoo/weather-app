@@ -1,4 +1,4 @@
-# Angular - Weather APP
+# Angular - Weather APP - [Demo App](https://halak.pl/weather-app)
 Aplikacja ma służyć do tworzenia listy lokacji, w których chcemy na bieżąco sprawdzać pogodę.
 
 ## Podstawowe funkcjonalności:
