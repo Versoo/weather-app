@@ -35,7 +35,6 @@ import {appReducers, AppStateEffects} from "./store";
       accessToken: environment.mapboxAccessToken
     })
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
