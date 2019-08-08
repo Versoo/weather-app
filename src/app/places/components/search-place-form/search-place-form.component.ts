@@ -1,13 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {debounceTime, filter, map, tap} from "rxjs/operators";
+import {debounceTime, filter, tap} from "rxjs/operators";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../store/app.reducer";
-import {Observable, Subscription} from "rxjs";
+import {Observable, pipe, Subscription} from "rxjs";
 import {AutocompleteSelectPlace, AutocompleteTyping} from "../../store/places.actions";
 import {MapboxFeature} from "../../services";
 import {MatAutocompleteSelectedEvent} from "@angular/material";
 import {isString} from "util";
+import {getPlacesAutocomplete} from "../../store/places.seletctors";
 
 @Component({
   selector: 'app-search-place-form',
@@ -31,10 +32,7 @@ export class SearchPlaceFormComponent implements OnInit, OnDestroy {
     ).subscribe();
 
     // Get stream of autocomplete options
-    this.options$ = this.store.select('places')
-      .pipe(
-        map(state => state.autocomplete)
-      );
+    this.options$ = this.store.select(pipe(getPlacesAutocomplete));
   }
 
   ngOnDestroy(): void {

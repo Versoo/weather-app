@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../store/app.reducer";
-import {LayoutSate} from "../../store/layout.reducer";
 import {tap} from "rxjs/internal/operators/tap";
 import {takeWhile} from "rxjs/operators";
 import {CloseSidebarNav, OpenSidebarNav} from "../../store/layout.actions";
+import {pipe} from "rxjs";
+import {getSidebarOpen} from "../../store/layout.selectors";
 
 @Component({
   selector: 'app-header',
@@ -19,13 +20,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.select('layout')
+    this.store.select(pipe(getSidebarOpen))
       .pipe(
         takeWhile(() => this.subscribeLayout),
-        tap((layout: LayoutSate) => {
-          this.sidebarOpen = layout.sidebarOpen;
-        })
-      ).subscribe()
+        tap((status: boolean) => this.sidebarOpen = status)
+      ).subscribe();
   }
 
   ngOnDestroy(): void {

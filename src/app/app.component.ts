@@ -1,8 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription} from "rxjs";
+import {Observable, pipe, Subscription} from "rxjs";
 import {Place} from "./places/models/place.model";
-import {map} from "rxjs/operators";
-import {PlacesState} from "./places/store/places.reducer";
 import {AppState} from "./store/app.reducer";
 import {Store} from "@ngrx/store";
 import {WeatherUpdatePlace} from "./places/store/places.actions";
@@ -10,6 +8,7 @@ import {ICoordinates} from "./places/services/coordinates.interface";
 import {OpenWeatherService} from "./places/services/open-weather.service";
 import {tap} from "rxjs/internal/operators/tap";
 import {LayoutSate} from "./shared/store/layout.reducer";
+import {getFavoritePlaces, getPlacesHistory} from "./places/store/places.seletctors";
 
 @Component({
   selector: 'app-root',
@@ -31,21 +30,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.layoutState$ = this.store.select('layout');
-    // TODO: Custom selector for Favorites State
-    this.favoritePlaces$ = this.store.select('places')
-      .pipe(
-        map((placesState: PlacesState) =>
-          placesState.history.filter((place: Place) => place.favorite)
-        ),
-      );
-
-    // TODO: Custom selector for History State
-    this.searchHistoryPlaces$ = this.store.select('places')
-      .pipe(
-        map((placesState: PlacesState) => placesState.history),
-      )
+    this.favoritePlaces$ = this.store.select(pipe(getFavoritePlaces));
+    this.searchHistoryPlaces$ = this.store.select(getPlacesHistory)
       .subscribe((places: Place[]) => this.searchHistoryPlaces = places);
-
     // Auto refresh Weather Data
     this.starTimer();
   }
