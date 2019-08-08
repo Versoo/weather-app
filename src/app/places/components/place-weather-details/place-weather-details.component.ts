@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Place} from "../../models/place.model";
+import {Place} from "../../models";
 
 @Component({
   selector: 'app-place-weather-details',

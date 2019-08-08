@@ -1,6 +1,6 @@
-import {PlacesState} from "./places.reducer";
 import {createSelector} from "@ngrx/store";
-import {AppState} from "../../store/app.reducer";
+import {PlacesState} from "./places.reducer";
+import {AppState} from "../../store";
 
 export const getPlacesState = (state: AppState) => state.places;
 

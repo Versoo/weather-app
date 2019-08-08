@@ -13,13 +13,11 @@ import {
   WeatherUpdatePlace,
 } from "./places.actions";
 import {catchError, map, switchMap} from "rxjs/operators";
-import {MapboxFeature, MapboxPlacesService} from "../services";
+import {ICoordinates, MapboxFeature, MapboxPlacesService, OpenWeatherService} from "../services";
 import {of} from "rxjs/internal/observable/of";
-import {Place} from "../models/place.model";
-import {AppState} from "../../store/app.reducer";
 import {Store} from "@ngrx/store";
-import {ICoordinates} from "../services/coordinates.interface";
-import {OpenWeatherService} from "../services/open-weather.service";
+import {AppState} from "../../store";
+import {Place} from "../models";
 
 @Injectable()
 export class PlacesEffects {

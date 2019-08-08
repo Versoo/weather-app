@@ -1,11 +1,10 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Place} from "../../../places/models/place.model";
 import {Store} from "@ngrx/store";
-import {AppState} from "../../../store/app.reducer";
-import {SelectCurrentPlace} from "../../../places/store/places.actions";
-import {PlacesState} from "../../../places/store/places.reducer";
 import {tap} from "rxjs/internal/operators/tap";
 import {takeWhile} from "rxjs/operators";
+import {PlacesState, SelectCurrentPlace} from "../../../places/store";
+import {AppState} from "../../../store";
+import {Place} from "../../../places/models";
 
 @Component({
   selector: 'app-map-view',

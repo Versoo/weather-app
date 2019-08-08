@@ -5,7 +5,7 @@ import {ICoordinates} from "./coordinates.interface";
 import {ActualWeatherResponse} from "./actual-weather-response";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
-import {PlaceWeatherData} from "../models/place.interface";
+import {PlaceWeatherData} from "../models";
 
 @Injectable({
   providedIn: 'root'

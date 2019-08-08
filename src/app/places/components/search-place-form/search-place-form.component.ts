@@ -2,13 +2,12 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {debounceTime, filter, tap} from "rxjs/operators";
 import {Store} from "@ngrx/store";
-import {AppState} from "../../../store/app.reducer";
 import {Observable, pipe, Subscription} from "rxjs";
-import {AutocompleteSelectPlace, AutocompleteTyping} from "../../store/places.actions";
 import {MapboxFeature} from "../../services";
 import {MatAutocompleteSelectedEvent} from "@angular/material";
 import {isString} from "util";
-import {getPlacesAutocomplete} from "../../store/places.seletctors";
+import {AutocompleteSelectPlace, AutocompleteTyping, getPlacesAutocomplete} from "../../store";
+import {AppState} from "../../../store";
 
 @Component({
   selector: 'app-search-place-form',

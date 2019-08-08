@@ -1,8 +1,8 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {Place} from "../../models/place.model";
 import {Store} from "@ngrx/store";
-import {AppState} from "../../../store/app.reducer";
-import {FavoritesAddPlace, FavoritesRemovePlace, SelectCurrentPlace} from "../../store/places.actions";
+import {FavoritesAddPlace, FavoritesRemovePlace, SelectCurrentPlace} from "../../store";
+import {AppState} from "../../../store";
+import {Place} from "../../models";
 
 @Component({
   selector: 'app-place-card',

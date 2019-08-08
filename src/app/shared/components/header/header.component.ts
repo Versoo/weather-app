@@ -1,11 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {AppState} from "../../../store/app.reducer";
 import {tap} from "rxjs/internal/operators/tap";
 import {takeWhile} from "rxjs/operators";
-import {CloseSidebarNav, OpenSidebarNav} from "../../store/layout.actions";
 import {pipe} from "rxjs";
-import {getSidebarOpen} from "../../store/layout.selectors";
+import {CloseSidebarNav, getSidebarOpen, OpenSidebarNav} from "../../store";
+import {AppState} from "../../../store";
 
 @Component({
   selector: 'app-header',

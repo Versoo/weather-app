@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SearchPlaceFormComponent} from './components/search-place-form/search-place-form.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -12,12 +11,15 @@ import {
 } from "@angular/material";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {PlacesHistoryListComponent} from './components/places-history-list/places-history-list.component';
-import {FavoritePlacesListComponent} from './components/favorite-places-list/favorite-places-list.component';
-import {ClearHistoryButtonComponent} from './components/clear-history-button/clear-history-button.component';
-import {PlaceCardComponent} from './components/place-card/place-card.component';
-import {FavoritePlaceIconButtonComponent} from './components/favorite-place-icon-button/favorite-place-icon-button.component';
-import { PlaceWeatherDetailsComponent } from './components/place-weather-details/place-weather-details.component';
+import {
+  ClearHistoryButtonComponent,
+  FavoritePlaceIconButtonComponent,
+  FavoritePlacesListComponent,
+  PlaceCardComponent,
+  PlacesHistoryListComponent,
+  PlaceWeatherDetailsComponent,
+  SearchPlaceFormComponent
+} from "./components";
 
 @NgModule({
   declarations: [SearchPlaceFormComponent, PlacesHistoryListComponent, FavoritePlacesListComponent, ClearHistoryButtonComponent, PlaceCardComponent, FavoritePlaceIconButtonComponent, PlaceWeatherDetailsComponent],

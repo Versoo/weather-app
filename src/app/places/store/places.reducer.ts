@@ -11,7 +11,7 @@ import {
   WEATHER_UPDATE_PLACE
 } from "./places.actions";
 import {MapboxFeature} from "../services";
-import {Place} from "../models/place.model";
+import {Place} from "../models";
 
 export interface PlacesState {
   autocomplete: MapboxFeature[];

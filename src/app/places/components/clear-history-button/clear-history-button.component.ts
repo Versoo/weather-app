@@ -1,7 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {AppState} from "../../../store/app.reducer";
-import {HistoryClearPlaces} from "../../store/places.actions";
+import {HistoryClearPlaces} from "../../store";
+import {AppState} from "../../../store";
 
 @Component({
   selector: 'app-clear-history-button',
