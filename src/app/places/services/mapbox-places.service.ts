@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
 import {MapboxAutocompleteResponse, MapboxFeature} from "./mapbox-places.interface";
-import {BaseApiService} from "../../shared/services/base-api.service";
+import {BaseApiService} from "../../shared/services";
 import {Observable} from "rxjs";
 
 @Injectable({

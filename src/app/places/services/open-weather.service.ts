@@ -6,7 +6,7 @@ import {ActualWeatherResponse} from "./actual-weather-response";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
 import {PlaceWeatherData} from "../models";
-import {BaseApiService} from "../../shared/services/base-api.service";
+import {BaseApiService} from "../../shared/services";
 
 @Injectable({
   providedIn: 'root'
