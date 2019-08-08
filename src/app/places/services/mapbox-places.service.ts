@@ -2,24 +2,26 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
-import {MapboxAutocompleteResponse} from "./mapbox-places.interface";
+import {MapboxAutocompleteResponse, MapboxFeature} from "./mapbox-places.interface";
+import {BaseApiService} from "../../shared/services/base-api.service";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class MapboxPlacesService {
-  private API_BASE_URI: string = environment.mapboxApiURI;
-  private API_ACCESS_TOKEN: string = environment.mapboxAccessToken;
-  private DEFAULT_PARAMS = {
+export class MapboxPlacesService extends BaseApiService {
+  protected API_BASE_URI: string = environment.mapboxApiURI;
+  protected API_ACCESS_TOKEN: string = environment.mapboxAccessToken;
+  protected DEFAULT_PARAMS = {
     access_token: this.API_ACCESS_TOKEN,
     language: 'pl',
   };
 
   constructor(private httpClient: HttpClient) {
-
+    super()
   }
 
-  autocompletePlaces(queryString: string, customParams?: {}) {
+  autocompletePlaces(queryString: string, customParams?: {}): Observable<MapboxFeature[]> {
     const autocompleteParams = {
       autocomplete: true,
       types: 'place',
@@ -35,13 +37,8 @@ export class MapboxPlacesService {
       );
   }
 
-  private getEndpointURI(endpoint: string, params?: {}) {
+  private getEndpointURI(endpoint: string, params?: {}): string {
     const queryString = this.generateQueryString(params);
     return `${this.API_BASE_URI}/${endpoint}?${queryString}`;
-  }
-
-  private generateQueryString(params: {}) {
-    const data = {...this.DEFAULT_PARAMS, ...params};
-    return Object.keys(data).map(key => key + '=' + data[key]).join('&');
   }
 }
