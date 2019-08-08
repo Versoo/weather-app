@@ -6,15 +6,22 @@ import {ActualWeatherResponse} from "./actual-weather-response";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
 import {PlaceWeatherData} from "../models";
+import {BaseApiService} from "../../shared/services";
 
 @Injectable({
   providedIn: 'root'
 })
-export class OpenWeatherService {
-  private API_URI: string = environment.openweatermap_api_url;
-  private API_KEY: string = environment.openweatermap_api_key;
+export class OpenWeatherService extends BaseApiService {
+  protected API_BASE_URI: string = environment.openweatermap_api_url;
+  protected API_ACCESS_TOKEN: string = environment.openweatermap_api_key;
+  protected DEFAULT_PARAMS = {
+    appid: this.API_ACCESS_TOKEN,
+    lang: 'pl',
+    units: 'metric'
+  };
 
   constructor(private httpClient: HttpClient) {
+    super();
   }
 
   getWeatherByCords(coordinates: ICoordinates): Observable<PlaceWeatherData> {
@@ -28,12 +35,7 @@ export class OpenWeatherService {
   }
 
   private endpointURI(name: string, params: {} = {}): string {
-    const queryParams = this.getQueryString(params);
-    return `${this.API_URI}/${name}?appid=${this.API_KEY}&lang=pl&units=metric&${queryParams}`;
-  }
-
-  private getQueryString(params: {}): string {
-    const data = params || {};
-    return Object.keys(data).map(key => key + '=' + data[key]).join('&');
+    const queryParams = this.generateQueryString(params);
+    return `${this.API_BASE_URI}/${name}?${queryParams}`;
   }
 }
