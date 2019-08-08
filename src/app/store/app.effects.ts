@@ -1,14 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Actions} from '@ngrx/effects';
-import {PlacesEffects} from "../places/store/places.effects";
-
+import {PlacesEffects} from "../places/store";
 
 @Injectable()
 export class AppEffects {
-  constructor(private actions$: Actions) {
-  }
 }
-
 
 export const AppStateEffects = [
   AppEffects,

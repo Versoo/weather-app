@@ -1,6 +1,6 @@
 import {Action} from "@ngrx/store";
 import {MapboxFeature} from "../services";
-import {Place} from "../models/place.model";
+import {Place} from "../models";
 
 export const AUTOCOMPLETE_TYPING = '[Places] Autocomplete start typing';
 export const AUTOCOMPLETE_ADD_PLACE = '[Places] Autocomplete add search place';

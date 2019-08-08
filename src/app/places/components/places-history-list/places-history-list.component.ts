@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Place} from "../../models/place.model";
 import {Store} from "@ngrx/store";
-import {AppState} from "../../../store/app.reducer";
-import {HistoryRemovePlace} from "../../store/places.actions";
+import {HistoryRemovePlace} from "../../store";
+import {AppState} from "../../../store";
+import {Place} from "../../models";
 
 @Component({
   selector: 'app-places-history-list',

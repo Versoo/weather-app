@@ -1,12 +1,9 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FooterComponent} from './components/footer/footer.component';
-import { HeaderComponent } from './components/header/header.component';
+import {FooterComponent, HeaderComponent, MapViewComponent, SideNavComponent} from "./components";
 import {MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule} from "@angular/material";
-import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { MapViewComponent } from './components/map-view/map-view.component';
-import {NgxMapboxGLModule} from "ngx-mapbox-gl";
 import {PlacesModule} from "../places/places.module";
+import {CommonModule} from "@angular/common";
+import {NgxMapboxGLModule} from "ngx-mapbox-gl";
+import {NgModule} from "@angular/core";
 
 @NgModule({
   declarations: [FooterComponent, HeaderComponent, SideNavComponent, MapViewComponent],

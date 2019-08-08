@@ -1,6 +1,5 @@
 import {Action} from "@ngrx/store";
 
-
 export const OPEN_SIDEBAR_NAV = '[Layout] Open sidebar nav';
 export const CLOSE_SIDEBAR_NAV = '[Layout] Close sidebar nav';
 
