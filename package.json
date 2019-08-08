@@ -1,6 +1,6 @@
 {
   "name": "weather-app",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Weather App - Angular and NgRx",
   "author": {
     "name": "Marcin Halak",
